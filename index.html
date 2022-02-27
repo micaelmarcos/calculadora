@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style> 
+   html {
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+input {
+	font-size: 20px;
+}
+
+main {
+	margin-top: 30%;
+	width: 300px;
+	height: 300px;
+	border: 1px red solid;
+}
+
+/*FORMATACAO DO MENU DE EXIBICAO DE RESULTADO*/
+
+#resultado {
+	border: 1px green solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#resultado input {
+	width: 290px;
+	height: 50px;
+	text-align: right;
+	font-size: 30px;
+}
+
+#valores {
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px yellow solid;
+
+}
+
+
+/*FORMATACAO DOS BOTOES DE NUMEROS*/
+
+#botoes {
+	border: 1px blue solid;
+	width: 240px;
+	height: 100%;
+	background-color: #F5F5F5;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+
+}
+
+#botoes input {
+	width: 60px;
+	height: 60px;
+}
+
+
+/* FORMATACAO DAS OPERACOES */
+
+#operacoes {
+	border: 1px pink solid;
+	display: flex;
+	flex-direction: column;
+	width: 54PX;
+}
+
+#operacoes input {
+	height: 60px;
+}
+
+#operacoes-hr input {
+	width: 240px;
+	height: 60px;
+}
+  </style>
+	<meta charset="utf-8">
+	<title>Calculadora</title>
+	<link rel="stylesheet" type="text/css" href="style_calculadora.css">
+</head>
+<body>
+	<main>
+		<div id="resultado">
+			<input id="input_resultado" type="text" disabled="" placeholder="0" >
+		</div>
+		<div id="valores">
+			<div id="botoes">
+				<input type="button" value="C" onclick="calcular('acao', 'c')">
+				<input type="button" value="1" onclick="calcular('valor', 1)">
+				<input type="button" value="2" onclick="calcular('valor', 2)">
+				<input type="button" value="3" onclick="calcular('valor', 3)">
+				<input type="button" value="4" onclick="calcular('valor', 4)">
+				<input type="button" value="5" onclick="calcular('valor', 5)">
+				<input type="button" value="6" onclick="calcular('valor', 6)">
+				<input type="button" value="7" onclick="calcular('valor', 7)">
+				<input type="button" value="8" onclick="calcular('valor', 8)">
+				<input type="button" value="9" onclick="calcular('valor', 9)">
+				<input type="button" value="0" onclick="calcular('valor', 0)">
+				<div id="operacoes-hr">
+					<input type="button" value="=" onclick="calcular('acao', '=')">
+				</div>
+			</div>
+
+			<div id="operacoes">
+				<input type="button" value="/" onclick="calcular('acao', '/')">
+				<input type="button" value="*" onclick="calcular('acao', '*')">
+				<input type="button" value="-" onclick="calcular('acao', '-')">
+				<input type="button" value="+" onclick="calcular('acao', '+')">
+			</div>
+			
+		</div>
+	</main>
+
+	<script>
+	//ADICIONA O NUMERO DIGITADO AO VISOR
+	function calcular (tipo, valor) {
+		if (tipo == "valor") {
+			document.getElementById("input_resultado").value += valor;
+		}
+		if (tipo == 'acao') {
+			if (valor == 'c') {
+				document.getElementById("input_resultado").value = "";
+			}
+			if (valor == '/' || valor == '*' || valor == '-' || valor == '+')  {
+				document.getElementById('input_resultado').value += valor;
+				
+			}
+			if (valor == '=') {
+				var total = eval(document.getElementById('input_resultado').value	)	
+				console.log(total)	
+				document.getElementById('input_resultado').value = total;	
+			}
+		}	
+
+	}
+		
+	</script>
+</body>
+</html>
